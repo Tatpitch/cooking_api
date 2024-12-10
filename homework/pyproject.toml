@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+pythonpath = [
+    ".", "cook_app",
+]
+asyncio_mode="auto"
