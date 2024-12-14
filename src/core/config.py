@@ -24,7 +24,7 @@ class DatabaseConfig(BaseModel):
     # вместо строки для подключения используется валидация, содержащая набор разрешенных и запрещенных ссылок
     echo: bool = False
     echo_pool: bool = False
-    pool_size: int = 50
+    pool_size: int = 5
     max_overflow: int = 10
 
 
@@ -32,9 +32,17 @@ class Settings(BaseSettings):
     """
     Класс длях ранения настроек приложения
     """
+    model_config = SettingsConfigDict(
+        env_file=(".env.template", ".env"),  # 2 файла для чтения параметров
+        case_sensitive=False,   # нечувствительность к регистру
+        env_nested_delimiter="__",  # разделитель для вложенных объектов
+        env_prefix="APP_CONFIG__",
+    )
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
     db: DatabaseConfig
 
 
 settings = Settings()
+print(settings.db.url)
+print(settings.db.echo)
