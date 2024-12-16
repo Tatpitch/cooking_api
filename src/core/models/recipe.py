@@ -16,5 +16,9 @@ class Recipe(Base):
     count_views: Mapped[int] = mapped_column(default=0)
     description: Mapped[str_null_true]
 
+    used_ingredients: Mapped[List[Ingredient]] = relationship(
+        back_populates="used_in_recipe", secondary="ingredientsinrecipes"
+    )
+
     def __repr__(self):
         return f"Recipe: ID = {self.id}, title = {self.recipe_name}"
