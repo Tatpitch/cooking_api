@@ -15,6 +15,8 @@ class IngredientsInRecipe(Base):
     quantity: Mapped[float | None]
 
     def __repr__(self):
-        return (f"IngredientsInRecipe (recipe_id = {self.recipe_id}, "
-                f"ingredient_id = {self.ingredient_id}, "
-                f"quantity = {self.quantity}")
+        return (
+            f"IngredientsInRecipe (recipe_id = {self.recipe_id}, "
+            f"ingredient_id = {self.ingredient_id}, "
+            f"quantity = {self.quantity}"
+        )

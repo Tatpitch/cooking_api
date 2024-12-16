@@ -11,7 +11,7 @@ from core.config import settings
 
 
 class DatabaseHelper:
-# инициализация асинхронного движка и фабрики асинхронных сессий
+    # инициализация асинхронного движка и фабрики асинхронных сессий
     def __init__(
         self,
         url: str,
@@ -28,7 +28,7 @@ class DatabaseHelper:
             pool_size=pool_size,
             max_overflow=max_overflow,
         )
-# с аннотацией типов (создание фабрики сессий)
+        # с аннотацией типов (создание фабрики сессий)
         self.session_factory: async_sessionmaker[AsyncSession] = async_sessionmaker(
             bind=self.engine,    # движок
             autoflush=False,     # для асинх подключения
@@ -40,7 +40,7 @@ class DatabaseHelper:
     async def dispose(self) -> None:
         await self.engine.dispose()
 
-# создание и передача сессии в контекстном менеджере
+    # создание и передача сессии в контекстном менеджере
     async def session_getter(self) -> AsyncGenerator[AsyncSession, None]:    # вместо dependes
         async with self.session_factory() as session:
             yield session

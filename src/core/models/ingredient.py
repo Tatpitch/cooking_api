@@ -18,8 +18,10 @@ class Ingredient(Base):
     )
 
     def __repr__(self):
-        return (f"ingredient ID = {self.id}, ingredient name = {self.ingredient_name}"
-                f"ingredient description = {self.ingredient_description}")
+        return (
+            f"ingredient ID = {self.id}, ingredient name = {self.ingredient_name}"
+            f"ingredient description = {self.ingredient_description}"
+        )
 
 
 
