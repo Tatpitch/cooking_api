@@ -13,7 +13,7 @@ class Ingredient(Base):
     id: Mapped[int_pk]
     ingredient_name: Mapped[str_uniq]
     ingredient_description: Mapped[str_null_true]
-    used_in_recipe: Mapped[List[Recipe]] = relationship(
+    used_in_recipe: Mapped[List["Recipe"]] = relationship(
         back_populates="used_ingredients", secondary="ingredientsinrecipes"
     )
 

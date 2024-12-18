@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Annotated
-from sqlalchemy import func
+from sqlalchemy import func, MetaData
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.orm import declared_attr
 
@@ -14,11 +14,17 @@ update_at = Annotated[datetime, mapped_column(server_default=func.now(),
 str_uniq = Annotated[str, mapped_column(unique=True, nullable=False)]
 str_null_true = Annotated[str, mapped_column(nullable=True)]
 
+
 class Base(DeclarativeBase):
     """
     базовый класс для всех моделей таблиц
     """
     __abstract__ = True
+
+    metadata = MetaData(
+        naming_convention=settings.db.naming_convention,
+    )
+
     @declared_attr.directive
     def __tablename__(cls) -> str:
         return f"{(cls.__name__.lower())}s"

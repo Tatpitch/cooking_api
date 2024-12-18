@@ -1,7 +1,8 @@
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base, int_pk, str_uniq, str_null_true
+
 
 class IngredientsInRecipe(Base):
     """
@@ -12,7 +13,8 @@ class IngredientsInRecipe(Base):
                                            primary_key=True)
     ingredient_id: Mapped[int] = mapped_column(ForeignKey("ingredients.id", ondelete="CASCADE"),
                                            primary_key=True)
-    quantity: Mapped[float | None]
+    quantity: Mapped[str | None] = mapped_column(String(30))
+
 
     def __repr__(self):
         return (

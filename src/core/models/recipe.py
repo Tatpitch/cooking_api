@@ -8,15 +8,15 @@ if TYPE_CHECKING:
 
 class Recipe(Base):
     """
-    класс рецпта
+    класс рецепта
     """
     id: Mapped[int_pk]
     recipe_name: Mapped[str_uniq]
     cooking_time: Mapped[int] = mapped_column(default=10)
     count_views: Mapped[int] = mapped_column(default=0)
-    description: Mapped[str_null_true]
+    recipe_description: Mapped[str_null_true]
 
-    used_ingredients: Mapped[List[Ingredient]] = relationship(
+    used_ingredients: Mapped[List["Ingredient"]] = relationship(
         back_populates="used_in_recipe", secondary="ingredientsinrecipes"
     )
 
