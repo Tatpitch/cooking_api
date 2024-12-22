@@ -7,8 +7,6 @@ from .main_page import router as main_router
 
 router = APIRouter()
 
-router.include_router(
-    main_router,
-    recipes_router,
-    ingredients_router,
-)
+router.include_router(main_router, tags=["router main page"])
+router.include_router(recipes_router, tags=["router recipes"])
+router.include_router(ingredients_router, tags=["router iredients"])
