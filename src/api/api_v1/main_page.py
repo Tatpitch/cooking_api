@@ -5,4 +5,4 @@ router = APIRouter()
 
 @router.get("/", tags=["главная страница кулинарной книги"], response_model=MainBase)
 def main_page():
-    return {'message': "Main page recipes"}
+    return {'message': "Main page cooking book"}
