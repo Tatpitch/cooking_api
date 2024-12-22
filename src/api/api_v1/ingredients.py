@@ -29,7 +29,7 @@ async def get_ingredients(
 
 
 @router.post("", response_model=IngredientRead)
-async def create_user(
+async def create_ingredient(
     session: Annotated[
         AsyncSession,
         Depends(db_helper.session_getter),
