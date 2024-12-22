@@ -1,3 +1,4 @@
+# запросы для класса Ingredient
 from typing import Annotated
 
 from fastapi import (
@@ -13,10 +14,11 @@ from core.schemas.ingredient import (
 )
 from crud import ingredients as ingredients_crud
 
+# роутер для запросов класса Ingredients
 router = APIRouter(tags=["Ingredients"])
 
-
-@router.get("", response_model=list[IngredientRead])
+# получение всех инградиентов
+@router.get("/ingredients", response_model=list[IngredientRead])
 async def get_ingredients(
     # session: AsyncSession = Depends(db_helper.session_getter),
     session: Annotated[
@@ -28,7 +30,8 @@ async def get_ingredients(
     return ingredients
 
 
-@router.post("", response_model=IngredientRead)
+# post запрос на создание нового инградиента
+@router.post("/ingredients", response_model=IngredientRead)
 async def create_ingredient(
     session: Annotated[
         AsyncSession,

@@ -12,11 +12,11 @@ class RunConfig(BaseModel):
     host: str = "0.0.0.0"
     port: int = 8000
 
-class ApiPrefix(BaseModel):
-    """
-    класс для хранения префиксов роутеров
-    """
-    prefix: str = "/recipes"
+# class ApiPrefix(BaseModel):
+#     """
+#     класс для хранения префиксов роутеров
+#     """
+#     prefix: str = "/recipes"
 
 # конфигурация для подключения к БД
 class DatabaseConfig(BaseModel):
@@ -47,7 +47,7 @@ class Settings(BaseSettings):
         env_prefix="APP_CONFIG__",
     )
     run: RunConfig = RunConfig()
-    api: ApiPrefix = ApiPrefix()
+    # api: ApiPrefix = ApiPrefix()
     db: DatabaseConfig
 
 
