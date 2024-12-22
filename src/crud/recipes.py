@@ -1,4 +1,4 @@
-# обработка запросов для класса recipe
+# обработка запросов для класса Recipe
 from typing import Sequence
 
 from sqlalchemy import select
@@ -22,9 +22,11 @@ async def get_recipe_by_id(
         session: AsyncSession,
         recipe_id: int
 ):
+    # информация о рецепте из таблицы recipes
     result = await session.execute(
         select(Recipe).filter(Recipe.id == recipe_id)
     )
+    # информация об инградиентах найденного рецепта
     result_ingredients = await session.execute(
         select(IngredientsInRecipe.quantity,
                Ingredient.ingredient_name,
