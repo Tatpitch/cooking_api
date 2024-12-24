@@ -2,15 +2,16 @@ from typing import TYPE_CHECKING, List
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base, int_pk, str_uniq, str_null_true
+from .mixins.int_id_pk import IntIdPkMixin
 
 if TYPE_CHECKING:
     from .ingredient import Ingredient
 
-class Recipe(Base):
+class Recipe(IntIdPkMixin, Base):
     """
     класс рецепта
     """
-    id: Mapped[int_pk]
+    # id: Mapped[int_pk]
     recipe_name: Mapped[str_uniq]
     cooking_time: Mapped[int] = mapped_column(default=10)
     count_views: Mapped[int] = mapped_column(default=0)

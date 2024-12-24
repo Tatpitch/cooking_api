@@ -18,7 +18,9 @@ from crud import ingredients as ingredients_crud
 router = APIRouter(tags=["Ingredients"])
 
 # получение всех инградиентов
-@router.get("/ingredients", response_model=list[IngredientRead])
+@router.get("/ingredients",
+            summary="Get all ingredients",
+            response_model=list[IngredientRead])
 async def get_ingredients(
     # session: AsyncSession = Depends(db_helper.session_getter),
     session: Annotated[
@@ -31,7 +33,9 @@ async def get_ingredients(
 
 
 # post запрос на создание нового инградиента
-@router.post("/ingredients", response_model=IngredientRead)
+@router.post("/ingredients",
+             summary="Add new ingredient",
+             response_model=IngredientRead)
 async def create_ingredient(
     session: Annotated[
         AsyncSession,

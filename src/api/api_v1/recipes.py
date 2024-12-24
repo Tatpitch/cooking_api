@@ -18,7 +18,9 @@ from crud import recipes as recipes_crud
 router = APIRouter(tags=["Recipes"])
 
 # получение всех рецептов
-@router.get("/recipes", response_model=List[RecipeRead])
+@router.get("/recipes",
+            summary="Get list all recipes",
+            response_model=List[RecipeRead])
 async def get_recipes(
     # session: AsyncSession = Depends(db_helper.session_getter),
     session: Annotated[
@@ -33,8 +35,8 @@ async def get_recipes(
 # получение детальной информации о рецепте по его id
 @router.get(
     "/recipes/{recipe_id}",
-    tags=["Подробно о рецепте"],
-    response_model=RecipeDetail
+    summary="Get detail information about recipe",
+    response_model=List[RecipeDetail]
 )
 async def get_recipe_by_id(
     session: Annotated[
@@ -48,8 +50,11 @@ recipe_id: int,
     )
     return recipe
 
+
 # создание нового рецепта
-@router.post("/recipes", response_model=RecipeRead)
+@router.post("/recipes",
+             summary="Create new recipe",
+             response_model=RecipeRead)
 async def create_recipe(
 session: Annotated[
     AsyncSession,

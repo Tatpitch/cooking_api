@@ -65,7 +65,9 @@ async def create_recipe(
         session: AsyncSession,
         recipe_create: RecipeCreate,
 ) -> Recipe:
+    print("crud/ recipe")
     data = recipe_create.model_dump()
+    print(data)
     recipe = Recipe(
         recipe_name=data["recipe_name"],
         cooking_time=data["cooking_time"],

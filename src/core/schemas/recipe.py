@@ -9,30 +9,29 @@ class RecipeBase(BaseModel):
     recipe_description: str = ("Взбить яйца с молоком в вылить "
                                "на горячую сковороду. Закрыть крышкой.")
     cooking_time: int = 15
-    count_views: int = 1
+    count_views: int = 5
 
 
-class IngreientsInRecipe(BaseModel):
+class IngredientsInRecipe(BaseModel):
     ingredient_id: int
     quantity: str = "Количество продукта в рецепте"
 
 
 class RecipeCreate(RecipeBase):
-    igredients: List[IngreientsInRecipe]
+    ingredients: List[IngredientsInRecipe]
 
 
 class RecipeRead(RecipeBase):
     model_config = ConfigDict(
         from_attributes=True,
     )
-
     id: int
 
 
 class Ingredient(BaseModel):
     name: str
-    description: str
-    quantity: str
+    description: str | None
+    quantity: str | None
 
 
 class RecipeDetail(BaseModel):

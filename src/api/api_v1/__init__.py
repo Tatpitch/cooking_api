@@ -9,4 +9,4 @@ router = APIRouter()
 
 router.include_router(main_router, tags=["router main page"])
 router.include_router(recipes_router, tags=["router recipes"])
-router.include_router(ingredients_router, tags=["router iredients"])
+router.include_router(ingredients_router, tags=["router inredients"])
