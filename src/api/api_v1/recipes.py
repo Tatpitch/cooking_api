@@ -36,7 +36,7 @@ async def get_recipes(
 @router.get(
     "/recipes/{recipe_id}",
     summary="Get detail information about recipe",
-    response_model=List[RecipeDetail]
+    response_model=RecipeDetail
 )
 async def get_recipe_by_id(
     session: Annotated[
@@ -62,8 +62,11 @@ session: Annotated[
     ],
     recipe_data: RecipeCreate,
 ):
-    recipe = recipes_crud.create_recipe(
+    print("Add new recipe", recipe_data)
+    print("Before call recipes_crud.create_recipe")
+    recipe = await recipes_crud.create_recipe(
         session=session,
         recipe_create=recipe_data,
     )
+    print("new recipe", recipe['recipe_name'])
     return recipe

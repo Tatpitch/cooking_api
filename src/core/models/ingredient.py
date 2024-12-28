@@ -6,6 +6,7 @@ from .mixins.int_id_pk import IntIdPkMixin
 
 if TYPE_CHECKING:
     from .recipe import Recipe
+    from .ingredient_in_recipe import IngredientsInRecipe
 
 class Ingredient(IntIdPkMixin, Base):
     """
@@ -14,9 +15,11 @@ class Ingredient(IntIdPkMixin, Base):
     # id: Mapped[int_pk]
     ingredient_name: Mapped[str_uniq]
     ingredient_description: Mapped[str_null_true]
-    used_in_recipe: Mapped[List["Recipe"]] = relationship(
-        back_populates="used_ingredients", secondary="ingredientsinrecipes"
-    )
+    used_in_recipe: Mapped[List["IngredientsInRecipe"]] = relationship(
+        back_populates="ingredient")
+    # used_in_recipe: Mapped[List["Recipe"]] = relationship(
+    #     back_populates="used_ingredients", secondary="ingredientsinrecipes"
+    # )
 
     def __repr__(self):
         return (

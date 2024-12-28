@@ -6,8 +6,7 @@ from pydantic import ConfigDict
 
 class RecipeBase(BaseModel):
     recipe_name: str = "Омлет с молоком"
-    recipe_description: str = ("Взбить яйца с молоком в вылить "
-                               "на горячую сковороду. Закрыть крышкой.")
+    recipe_description: str = "Взбить яйца с молоком в вылить на горячую сковороду. Закрыть крышкой."
     cooking_time: int = 15
     count_views: int = 5
 
@@ -30,8 +29,8 @@ class RecipeRead(RecipeBase):
 
 class Ingredient(BaseModel):
     name: str
-    description: str | None
-    quantity: str | None
+    description: str
+    quantity: str
 
 
 class RecipeDetail(BaseModel):

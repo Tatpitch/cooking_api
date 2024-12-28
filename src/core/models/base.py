@@ -28,5 +28,5 @@ class Base(DeclarativeBase):
     @declared_attr.directive
     def __tablename__(cls) -> str:
         return f"{(cls.__name__.lower())}s"
-    create_at: Mapped[create_at]
-    update_at: Mapped[update_at]
+    # create_at: Mapped[create_at]
+    # update_at: Mapped[update_at]
