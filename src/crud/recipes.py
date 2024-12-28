@@ -94,6 +94,6 @@ async def create_recipe(
         )
     print("ingredients in recipe", ingredients_in_recipe)
     session.add_all(ingredients_in_recipe)
-    # await session.commit()
-    await session.refresh(recipe)
+    await session.commit()
+    # await session.refresh(recipe)
     return recipe
