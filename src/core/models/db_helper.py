@@ -15,8 +15,8 @@ class DatabaseHelper:
     def __init__(
         self,
         url: str,
-        echo: bool = False,     #отображение запросов к БД
-        echo_pool: bool = False,    #информация для connection pool
+        echo: bool = False,     # отображение запросов к БД
+        echo_pool: bool = False,    # информация для connection pool
         pool_size: int = 5, # кол-во открытых соединений
         max_overflow: int = 10,
     ) -> None:

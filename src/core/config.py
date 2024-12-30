@@ -12,12 +12,6 @@ class RunConfig(BaseModel):
     host: str = "0.0.0.0"
     port: int = 8000
 
-# class ApiPrefix(BaseModel):
-#     """
-#     класс для хранения префиксов роутеров
-#     """
-#     prefix: str = "/recipes"
-
 # конфигурация для подключения к БД
 class DatabaseConfig(BaseModel):
     url: PostgresDsn        # вся строка или можно было все по отдельности (host, port, user, password, db_name)
@@ -47,10 +41,7 @@ class Settings(BaseSettings):
         env_prefix="APP_CONFIG__",
     )
     run: RunConfig = RunConfig()
-    # api: ApiPrefix = ApiPrefix()
     db: DatabaseConfig
 
 
 settings = Settings()
-print(settings.db.url)
-print(settings.db.echo)
