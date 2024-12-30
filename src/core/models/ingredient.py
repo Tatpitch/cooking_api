@@ -12,14 +12,11 @@ class Ingredient(IntIdPkMixin, Base):
     """
     класс инградиента, входящего в рецепт блюда
     """
-    # id: Mapped[int_pk]
     ingredient_name: Mapped[str_uniq]
     ingredient_description: Mapped[str_null_true]
     used_in_recipe: Mapped[List["IngredientsInRecipe"]] = relationship(
         back_populates="ingredient")
-    # used_in_recipe: Mapped[List["Recipe"]] = relationship(
-    #     back_populates="used_ingredients", secondary="ingredientsinrecipes"
-    # )
+
 
     def __repr__(self):
         return (
