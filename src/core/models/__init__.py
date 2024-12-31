@@ -7,10 +7,11 @@ __all__ = (
     "IngredientsInRecipe",
 )
 
+from .base import Base
+
 # для укорочения импорта
 from .db_helper import db_helper
-from .base import Base
-from .recipe import Recipe
 from .ingredient import Ingredient
 from .ingredient_in_recipe import IngredientsInRecipe
 from .mixins.int_id_pk import IntIdPkMixin
+from .recipe import Recipe

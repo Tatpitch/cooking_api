@@ -1,12 +1,14 @@
 # схема для отображения полей класса recipe
 from typing import List
-from pydantic import BaseModel
-from pydantic import ConfigDict
+
+from pydantic import BaseModel, ConfigDict
 
 
 class RecipeBase(BaseModel):
     recipe_name: str = "Омлет с молоком"
-    recipe_description: str = "Взбить яйца с молоком в вылить на горячую сковороду. Закрыть крышкой."
+    recipe_description: str = (
+        "Взбить яйца с молоком в вылить на горячую сковороду. Закрыть крышкой."
+    )
     cooking_time: int = 15
     count_views: int = 5
 
@@ -40,4 +42,3 @@ class RecipeDetail(BaseModel):
     count_views: int
     recipe_description: str
     ingredients: List[Ingredient]
-

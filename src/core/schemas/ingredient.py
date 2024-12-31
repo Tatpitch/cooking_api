@@ -1,6 +1,5 @@
 # схема для отображения полей класса ingredient
-from pydantic import BaseModel
-from pydantic import ConfigDict
+from pydantic import BaseModel, ConfigDict
 
 
 class IngredientBase(BaseModel):
