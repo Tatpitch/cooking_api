@@ -62,8 +62,7 @@ jobs:
           compose-file: "src/docker-compose.yaml"
 
       - name: Run tests
-        run: |
-          source venv/bin/activate
+        run:
           python -m pytest
 
       - name: Run black
@@ -81,3 +80,4 @@ jobs:
       - name: Run mypy
         run:
           mypy src/
+          mypy tests/
