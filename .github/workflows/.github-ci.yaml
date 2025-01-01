@@ -60,10 +60,11 @@ jobs:
         with:
           compose-file: "src/docker-compose.yaml"
 
-
-
       - name: Run tests
-        run: python -m pytest
+        run: |
+          source venv/bin/activate
+          python -m pytest
+
       - name: Run black
         run: |
           black --diff --check src/
