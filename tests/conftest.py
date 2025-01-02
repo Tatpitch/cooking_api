@@ -4,11 +4,7 @@ from typing import AsyncGenerator
 import pytest
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import insert
-from sqlalchemy.ext.asyncio import (
-    AsyncSession,
-    async_sessionmaker,
-    create_async_engine,
-)
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from core.models.base import Base
 from core.models.db_helper import db_helper
