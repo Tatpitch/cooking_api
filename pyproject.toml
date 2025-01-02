@@ -4,6 +4,7 @@ name = "cooking_book"
 version = "0.1.0"
 description = "my description"
 authors = ["Tatpitch"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
